@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+    h1= title
+    p Welcome to #{title}
+
+    form(action="/combat/resolve", method="post")
+      div.mb-3
+        label#ratio-label.form-label(for='ratio') Ratio: 0
+        input#ratio.form-range(type='range' name='ratio' min='-11' max='11' step='1' default='0')
+        input#fight(type="submit" value="Strid")
+
+    div#combat-result
+
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(src="/javascripts/combat.js")
