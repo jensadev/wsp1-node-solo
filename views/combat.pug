@@ -2,16 +2,21 @@ extends layout
 
 block content
   .container
-    h1= title
-    p Welcome to #{title}
+    h1 Stridssystem
+    p.lead
+      a(href="http://www.ensamma-vargen.se/pdf/referensark.pdf") Referens
+
+    p.lead Räkna ut stridsration (din stridspoäng - fiendens stridspoäng) 
+      | flytta mätaren och klicka strid för resultat.
 
     form(action="/combat/resolve", method="post")
       div.mb-3
         label#ratio-label.form-label(for='ratio') Ratio: 0
         input#ratio.form-range(type='range' name='ratio' min='-11' max='11' step='1' default='0')
-        input#fight(type="submit" value="Strid")
+        input#fight.btn.btn-primary(type="submit" value="Strid")
 
-    div#combat-result
+    div
+      pre#combat-result
 
   script(src='https://unpkg.com/axios/dist/axios.min.js')
   script(src="/javascripts/combat.js")

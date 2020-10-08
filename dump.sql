@@ -113,6 +113,79 @@ LOCK TABLES `combat_results` WRITE;
 INSERT INTO `combat_results` VALUES (1,'D'),(2,'0'),(3,'1'),(4,'2'),(5,'3'),(6,'4'),(7,'5'),(8,'6'),(9,'7'),(10,'8'),(11,'9'),(12,'10'),(13,'11'),(14,'12'),(15,'13'),(16,'14'),(17,'15'),(18,'16'),(19,'17'),(20,'18');
 /*!40000 ALTER TABLE `combat_results` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `encounters`
+--
+
+DROP TABLE IF EXISTS `encounters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `encounters` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `encounters`
+--
+
+LOCK TABLES `encounters` WRITE;
+/*!40000 ALTER TABLE `encounters` DISABLE KEYS */;
+/*!40000 ALTER TABLE `encounters` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `links`
+--
+
+DROP TABLE IF EXISTS `links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `links` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `story_id` bigint unsigned DEFAULT NULL,
+  `target_id` bigint unsigned DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `links`
+--
+
+LOCK TABLES `links` WRITE;
+/*!40000 ALTER TABLE `links` DISABLE KEYS */;
+INSERT INTO `links` VALUES (1,1,2,'Du väljer att hjälpa din far.'),(2,1,17,'Det är inte värt mödan att hjälpa gubben, han kan väl ta hand om sina egna skulder.'),(3,2,4,'Du väljer att smyga efter din bror ut i skogen.'),(4,2,5,'Du väntar på gården.'),(5,5,6,'Gå vidare.'),(6,6,7,'Följer efter din storebror.'),(7,6,12,'Stannar på gården.'),(8,7,8,'Ligger kvar.'),(9,7,12,'Flyr hemåt.'),(10,8,9,'Åla dig fram så du hör trollet.'),(11,8,11,'Ligga kvar.'),(12,9,11,'Du ligger kvar och gömmer dig.'),(13,9,10,'Du kliver fram.'),(14,10,18,'Om striden pågår i fler än tre rundor.'),(15,11,13,'Den tredje dagen.'),(16,13,14,'Du säger inget.'),(17,14,15,'Ber du henne om en ordentligt matsäck?\r\n\r\n'),(18,14,16,'Eller ber du henne önska dig lycka till?'),(19,15,16,'Notera osten i din väska och fortsätt.'),(20,16,10,'Försöker du argumentera med trollet?'),(21,16,19,'Har du en ost i din väska och vill använda den?'),(22,19,20,'Du väljer att skona trollet.'),(23,19,21,'Efter det trollet har gjort kan du omöjligen skona det.'),(24,20,23,'Du följer med trollet hem.'),(25,20,22,'Hem till trollet, nej tack.'),(26,22,21,'Trollet anfaller.'),(27,23,24,'Du försöker lyfta hinkarna.'),(28,23,25,'Du säger...'),(29,24,21,'Trollet anfaller.'),(30,25,26,'Föreslå att äta ikapp med trollet.'),(31,25,33,'Avvakta och se vad trollet gör.'),(32,26,27,'Ni sätter er till bords.'),(33,27,28,'Skär hål i väskan.'),(34,27,33,'Avvakta och se vad trollet gör.'),(35,28,29,'Efter en stund lägger trollet bort skeden.'),(36,29,30,'»Du skall äta», svarar du.'),(37,29,33,'Avvakta och se vad trollet gör.'),(38,30,31,'Vad gör trollet...'),(39,31,32,'Med väskan full vänder du hemåt.'),(40,33,21,'Trollet anfaller.'),(41,21,34,'Om du besegrar trollet.'),(42,21,18,'Om du förlorar striden.'),(43,34,32,'Med väskan full vänder du hemåt.');
+/*!40000 ALTER TABLE `links` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `story`
+--
+
+DROP TABLE IF EXISTS `story`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `story` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `body` text,
+  `enemy` int DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `story`
+--
+
+LOCK TABLES `story` WRITE;
+/*!40000 ALTER TABLE `story` DISABLE KEYS */;
+INSERT INTO `story` VALUES (1,'Det var en gång en bonde som hade tre söner. Bonden var skuldsatt och gammal och svag, men ingen av sönerna ville hjälpa sin far. Till gården hörde en stor skog. Bonden ville att sönerna skulle fälla träd i den och på det sättet försöka betala av något på skulden..\r\n\r\nBonden är din far.\r\n\r\nVill du hjälpa din pappa?',NULL),(2,'Efter många övertalningsförsök fick han dig och dina två äldre bröder att ställa upp. \r\n\r\nFörst gick den äldste ut i skogen med sin yxa på axeln.',NULL),(4,'Du följer efter din storebror ut i skogen och gömmer dig bakom ett träd. Där ser du.\r\n\r\nNär storebror hade kommit in i skogen och börjat hugga på en gammal skäggig gran kom ett stort, tjockt troll fram till honom.\r\n\r\n»Om du hugger i min skog, så slår jag ihjäl dig», sa trollet.\r\n\r\nDå pojken hörde det kastade han yxan ifrån sig och sprang hem så fort han kunde. \r\n\r\nDu följer efter.',NULL),(5,'På gården så ser du din bror komma tillbaka från skogen.\r\n\r\nHan är alldeles andfådd och berättar skräckslagen vad som hänt honom. Pappa blir arg på honom.',NULL),(6,'»Vilket harhjärta du är!», sa fadern. »Trollen skrämde aldrig mig när jag var ung och högg träd i skogen.»\r\n\r\nFöljande dag gav den näst äldsta sonen sig av till skogen.\r\n\r\nVad gör du?',NULL),(7,'Du följer efter din bror och siktar på att gömma dig bakom trädet igen. Plötsligt snubblar du till och ramlar pladask på magen.',NULL),(8,'Du ligger kvar i mossan, tyst som en mus.\r\n\r\nDu ser hur historien upprepar sig. När din bror har gjort några hugg i en gran kommer trollet fram till honom.\r\n\r\nDu är utanför hörhåll.',NULL),(9,'Du kommer närmare, men ditt ålande är inte direkt tyst.\r\n\r\nDu hör trollet säga.\r\n\r\n»Om du hugger i min skog, så slår jag ihjäl dig.»\r\n\r\nGossen vågade knappt se på trollet utan kastade yxan ifrån sig och sprang så fort han kunde därifrån. \r\n\r\nDu ser hur trollet spanar efter din bror, sedan säger han.\r\n\r\n»Du kan komma fram nu, vad vill du min skog?.»',NULL),(10,'Du kliver fram och tittar på trollet. Med darrande röst svarar du att du visst behöver hugga ned träden i trollets skog för att betala din pappas skuld.\r\n\r\nTrollet anfaller. Strid.\r\n\r\nOm striden pågår i fler än tre rundor.',30),(11,'Du ligger kvar i flera timmar innan du smyger hem.\r\n\r\nVäl hemma får du höra att pappa skällde ut din bror precis som dagen innan.',NULL),(12,'På gården så ser du din bror komma tillbaka från skogen.\r\n\r\nPrecis som med din äldste bror, så blir pappa ursinnig och påpekar att det aldrig hade varit några läskiga påhittade troll som skrämdes i skogen då han var ung.',NULL),(13,'Tredje dagen är det tillslut din tur att försöka.\r\n\r\n»Ja du», säger dina äldre bröderna, »du kommer säkert göra bra ifrån dig. Du som aldrig varit utanför dörren!»\r\n\r\n',NULL),(14,'Sedan vänder du dig till din mor.',NULL),(15,'Din mor ger dig en stor och präktig ost som ännu inte är riktigt färdig. Den är vattnig och alldeles mjuk. Hela din väska fylls upp av osten.',NULL),(16,'Sedan ger du dig av.\r\n\r\nNär du kommit ut i skogen börjar du hugga på en gran i väntan på trollet.\r\n\r\nMycket riktigt så dyker det snart upp. Du känner dess läbbiga andedräkt när det säger.\r\n\r\n»Om du hugger i min skog, så slår jag ihjäl dig.»',NULL),(17,'Din fruktansvärda ohjälpsamhet förstör din familj. \r\n\r\nSagan slutar här.',NULL),(18,'Trollet är dig övermäktigt och din saga slutar här',NULL),(19,'Snabb som en blixt springer du bort till din väska och lyfter upp osten. Sedan klämmer du till den så att vasslan skvätter.\r\n\r\nSedan säger du till trollet »Håller inte du tyst», »så skall jag klämma dig, så som jag klämmer vattnet ur den här vita stenen!»\r\n\r\n»Nej, kära, skona mig», ber trollet, »jag skall hjälpa dig att hugga träd.»',NULL),(20,'På det villkoret skonar du trollet. Trollet var duktigt på att hugga. Tillsammans så fäller ni många stammar denna dag. \r\n\r\nFramemot kvällen så säger trollet.\r\n\r\n»Nu kan du följa med mig hem, det är närmare till mig än till dig.»',NULL),(21,'Ve och fasa det blir strid med trollet.',20),(22,'Du säger något om att du inte törs sova borta och ger dig av. Men trollet ser inte avvisandet med blida ögon.',NULL),(23,'Du tycker att det låter som ett bra erbjudande och följer med. Väl hemma i trollets berg börjar trollet göra upp eld i spisen. Du går efter efter vatten till grötgrytan. \r\n\r\nDär står två järnhinkar, stora och tunga.',NULL),(24,'Du kan inte rubba hinkarna ur fläcken. Trollet förstår din bluff.',NULL),(25,'»Det är inte värt att ta med sig de här fingerborgarna. Jag ska gå efter hela brunnen, jag.»\r\n\r\n»Nej, kära, snälla», svarar då trollet, »jag kan inte vara utan brunnen. Gör upp elden, du, så skall jag gå efter vatten.»\r\n\r\nDå trollet kommer tillbaka med vattnet kokade de tillsammans en väldig gryta med gröt över elden.',NULL),(26,'»Hör på», säger du, »Ska vi ät ikapp?» »Det kan vi göra», svarar trollet, övertygad om att han ska vinna.',NULL),(27,'Utan att trollet ser så sätter du din väska på magen under skjortan. Och när du äter så öser du mer i väskan än vad du stoppar i munnen. Tillslut så börjar väskan bli full, vad gör du?',NULL),(28,'Du tar upp din täljkniv och skär ett hål i väskan så att gröten rinner ut. Trollet tittar på dig, men säger inget. ',NULL),(29,'»Nej, nu orkar inte jag mer», säger trollet.',NULL),(30,'Du fortsätter, »jag är knappast halvmätt ännu. Gör du som jag gjorde: skär ett hål på magen, så äter du så mycket du vill.»',NULL),(31,'»Men det gör väl väldigt ont?» undrar  trollet\r\n\r\n»Å, ingenting att tala om», svarar du.\r\n\r\nOtroligt nog så gör trollet som du säger, och det kan man väl förstå, att trollet tog död på sig själv. \r\n\r\nExalterad över att det fungerar söker du igenom trollets berg. Du finner stora mängder silver och guld.',NULL),(32,'Tack vare trollets rikedom kan din far betala sina skulder. \r\n\r\nSnipp snapp snut så var sagan slut.',NULL),(33,'Trollet tittar finurligt på dig medans du funderar på ditt nästa drag, sedan säger det.\r\n\r\n»Jag förstår nog vad du försöker göra»',NULL),(34,'Exalterad över din seger söker du igenom trollets berg. Du finner stora mängder silver och guld.',NULL);
+/*!40000 ALTER TABLE `story` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -123,4 +196,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-02 14:58:03
+-- Dump completed on 2020-10-08 16:02:33

@@ -48,5 +48,8 @@ Routerna för combat är:
 
 På combat sidan så förväntas det att användaren räkna ut stridens ratio och anger den(kan självklart automatiseras).
 Det är skillnaden mellan hjältens stridspoäng och fiendens. Din stridspoäng(+ - vapen) - fiendens stridspoäng = ratio.
+
 Ratio skickas sedan med hjälp av [Axios](https://github.com/axios/axios) till servern där ett nummer slumpas och resultatet
-hämtas från databasen.
+hämtas från databasen. 
+
+Se [combat.js](https://raw.githubusercontent.com/jensnti/wsp1-node-solo/main/public/javascripts/combat.js) för klientkoden för denna AJAX request.

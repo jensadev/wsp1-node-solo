@@ -19,7 +19,7 @@ fight.addEventListener('click', function(e) {
   })
   .then(function (response) {
     console.log(response);
-    combatResult.textContent += JSON.stringify(response.data.result[0]);
+    combatResult.textContent += JSON.stringify(response.data.result[0]) + '\n';
   })
   .catch(function (error) {
       console.log(error);
