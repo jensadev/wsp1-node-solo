@@ -18,7 +18,7 @@ services:
       - node-net
 
   #MySQL Service
-  nodedb:
+  db:
     image: mysql:8.0.22
     container_name: nodedb
     restart: unless-stopped
@@ -29,8 +29,6 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: soloadventure
-      MYSQL_USER: solouser
-      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password123
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
