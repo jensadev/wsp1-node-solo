@@ -18,7 +18,7 @@ services:
       - node-net
 
   #MySQL Service
-  db:
+  nodedb:
     image: mysql:8.0.22
     container_name: nodedb
     restart: unless-stopped
