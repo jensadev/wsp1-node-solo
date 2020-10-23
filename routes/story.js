@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { query } = require('../models/db');
 
+router.get('/', function(req, res, next) {
+    res.json({msg: 'Här finns det story'});
+  });
+
 router.get('/:id', async function (req, res, next) {
     console.log(req.params);
 
