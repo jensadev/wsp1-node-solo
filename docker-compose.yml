@@ -29,7 +29,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: soloadventure
-      MYSQL_USER: solo
+      MYSQL_USER: solouser
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password123
       SERVICE_TAGS: dev
