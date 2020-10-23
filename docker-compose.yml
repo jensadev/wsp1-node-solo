@@ -30,8 +30,8 @@ services:
     environment:
       MYSQL_DATABASE: soloadventure
       MYSQL_USER: solo
-      MYSQL_PASSWORD: Secret123
-      MYSQL_ROOT_PASSWORD: SuperSecret123
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password123
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
